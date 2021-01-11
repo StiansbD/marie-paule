@@ -1,6 +1,8 @@
 :root {
     --color-main: #3F2B4B;
     --color-sec: #eee;
+    --white: #eee;
+    --purple: #3F2B4B;
 }
 
 @font-face {
@@ -54,12 +56,13 @@ p {
 
 a {
     color: var(--color-sec);
+    border-bottom: 2px solid var(--color-sec);
 }
 
 a:active, a:focus, a:hover {
-    opacity: 50%;
     text-decoration: none;
     color: var(--color-sec);
+    border-bottom: 2px solid var(--color-main);
 }
 
 /*-- media queries --*/

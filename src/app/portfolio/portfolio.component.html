@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Tableaux fait par Marie-Paule</h1>
+</div>
+<br><br><br>
+<div class="container">
+
+    <div 
+        class="card-columns">
+
+        <a 
+            class="card headline"
+            [id]="i"
+            *ngFor="let tableau of tableaux; let i = index"
+            (click)="onViewTableau(tableaux.length-i-1)"
+        >
+            <img [src]="tableaux[tableaux.length-i-1].image" class="card-img">
+        </a>
+    </div>
+</div>

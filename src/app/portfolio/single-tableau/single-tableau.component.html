@@ -1,0 +1,14 @@
+<div class="container">
+    <a (click)="onBack()">Retour</a>
+</div>
+<br><br>
+<div class="container">
+    <a onclick="reverse_img(this)">
+        <img [src]="tableau.image">
+        <div href="#" class="img-back description">
+            Description :
+            <br><br>
+            <div>{{tableau.description}}</div>
+        </div>
+    </a>
+</div>
