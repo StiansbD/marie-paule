@@ -1,117 +1,103 @@
+// sidebar
 .sidebar {
-    background: none;
+    background-color: var(--white);
     text-align: center;
     position: fixed;
-    width: 100%;
     letter-spacing: 2px;
+    width: 100%;
     font-size: 20px;
     top: 0;
     z-index: 1000;
+    padding: 1rem;
 }
 
-.sidebar-item {
-    padding: 1rem 0;
-    background-color: var(--color-main);
-    width: 18rem;
-    border: 1px solid var(--color-sec);
-    margin-top: -1px;
+.menu {
+    cursor: pointer;
+    border-bottom: 1px groove var(--purple-alpha);
+    transition: all 0.25s;
 }
 
-.sidebar-item:first-child {
-    border-top: none;
-    margin-top: 0px;
+.menu:hover,
+.menu:focus,
+.menu:active {
+    letter-spacing: 10px;
 }
 
-.sidebar-item:last-child {
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-.sidebar-item.mobile {
-    position: relative;
-
-    text-align: right;
-    padding-right: 5rem;
-    width: 100%;
-    margin: 0;
-    border: none;
-}
-
-#navbar-item {
+#sidebar-menu {
+    height: 0%;
     display: none;
-
-    right: 0;
-    position: absolute;
-    background-color: var(--color-sec);
-    border-radius: 5px;
 }
 
-#navbar-item.is-visible {
+#sidebar-menu.is-visible {
+    height: 100vh;
     display: block;
 }
 
-#navbar-item .sidebar-item {
-    padding: 1.5rem 0;
+#sidebar-menu.is-visible .sidebar-item {
+    padding: 2rem 0rem;
 }
 
-.sidebar .is-active {
-    background-color: var(--color-sec);
+.sidebar-head {
+    font-family: 'Marker-Felt';
+    font-size: 40px;
+    padding: 2rem;
 }
 
-.sidebar .is-active a {
-    color: var(--color-main);
+.sidebar-item a {
+    font-size: 30px;
+    color: var(--purple);
+    transition: all 0.25s;
+}
+
+.sidebar-item a:hover {
+    text-decoration: none;
+    letter-spacing: 10px;
+}
+
+.sidebar-item.is-active {
+    font-weight: bold;
+    text-shadow: 5px 5px 15px var(--purple-alpha);
+    box-shadow: 0px 0px 50px -30px var(--purple-alpha);
+}
+
+.sidebar-footer {
+    font-size: 12px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 0;
+    bottom: 0;
+    padding: 5rem 2rem;
+    position: absolute;
+    text-align: center;
 }
 
 /*-- media queries --*/
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .sidebar {
-        background-color: var(--color-main);
-        padding-top: 15vh;
-        letter-spacing: 5px;
-        font-size: 30px;
-        position: fixed;
-        height: 100%;
-        width: 20rem;
-        top: 0;
-        left: 2vw;
-    }
-    
-    .sidebar-item {
-        display: block;
-        text-align: center;
-        width: 100%;
-        border: none;
+        height: 100vh;
+        width: 40vh;
+        left: 2rem;
+        background-color: var(--white-alpha);
     }
 
-    .sidebar .mobile {
+    .menu {
         display: none;
     }
 
-    #navbar-item {
+    #sidebar-menu {
         display: block;
-        position: relative;
+        margin-top: 5rem;
     }
 
-    #navbar-item .sidebar-item a {
-        padding: 1rem 5px;
+    .sidebar-item {
+        padding: 1rem 0rem;
     }
 
-    a {
-        color: var(--color-sec);
-        border: none;
-    }
-    
-    a:active, a:focus, a:hover {
-        color: var(--color-main);
-        text-decoration: none;
+    #sidebar-menu.is-visible .sidebar-item {
+        padding: 1rem 0rem;
     }
 
-    .sidebar-item:active, .sidebar-item:focus, .sidebar-item:hover {
-        background-color: var(--color-sec);
-    }
-
-    .sidebar-item:active a, .sidebar-item:focus a, .sidebar-item:hover a {
-        color: var(--color-main);
+    .sidebar-footer {
+        padding: 1rem 5rem;
     }
 }

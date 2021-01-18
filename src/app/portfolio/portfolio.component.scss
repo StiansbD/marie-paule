@@ -1,16 +1,16 @@
+.card {
+    border: 1px solid var(--purple);
+    border-radius: 5px;
+    margin: 0.75rem;
+}
+
+.card:hover, .card:active, .card:focus {
+    box-shadow: 10px 10px 25px -10px var(--purple-alpha);
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
-    .card {
-        margin: 5rem 0rem;
-    }
-
-    a:hover {
-        cursor: pointer;
-        opacity: 100%;
-        border-bottom: 2px solid var(--color-sec);
-        transform: translateY(-5px);
-        box-shadow: 20px 20px 50px -8px var(--color-main);
-    }
 
 }
