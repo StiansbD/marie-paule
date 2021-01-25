@@ -12,6 +12,8 @@ import { ConnexionComponent } from './admin/connexion/connexion.component';
 import { AuthService } from './services/auth.service';
 import { PortfolioService } from './services/portfolio.service';
 import { SingleTableauComponent } from './portfolio/single-tableau/single-tableau.component';
+import { AddTableauComponent } from './admin/add-tableau/add-tableau.component';
+import { DeleteTableauComponent } from './admin/delete-tableau/delete-tableau.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SingleTableauComponent } from './portfolio/single-tableau/single-tablea
     FooterComponent,
     PortfolioComponent,
     ConnexionComponent,
-    SingleTableauComponent
+    SingleTableauComponent,
+    AddTableauComponent,
+    DeleteTableauComponent
   ],
   imports: [
     BrowserModule,
