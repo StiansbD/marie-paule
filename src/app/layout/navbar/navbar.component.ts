@@ -33,4 +33,10 @@ export class NavbarComponent implements OnInit {
     this.authService.signOutUser();
     this.router.navigate(['home']);
   }
+
+  YearNow(): void {
+    var d = new Date();
+    var year = d.getFullYear();
+    document.getElementById("year").append(year.toString());
+  } 
 }

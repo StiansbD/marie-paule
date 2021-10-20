@@ -19,6 +19,10 @@
     font-style: normal;
 }
 
+html {
+    background-color: var(--purple-alpha);
+}
+
 // body general option
 body {
     // image de fond
@@ -45,8 +49,7 @@ body {
 // mise en page du contenu
 .content {
     background-color: var(--white-alpha);
-    margin: 15rem 0rem 0rem 0rem;
-    padding: 2rem 0.5rem;
+    padding: 2rem 1rem;
 }
 
 
@@ -69,6 +72,11 @@ body {
     font-size: larger;
 }
 
+
+.no-scroll {
+    overflow-y: hidden;
+}
+
 /*-------- media queries --------*/
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -87,14 +95,18 @@ body {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .content {
+        position: relative;
+        margin-left: 20%;
+        padding: 5%;
+    }
+
+    .no-scroll {
+        overflow-y: auto !important;
+    }
      
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .content {
-        margin: 5rem 3rem 5rem 28rem;
-        padding: 5rem;        
-        border-radius: 5px;
-    }
 }

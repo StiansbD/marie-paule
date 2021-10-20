@@ -10,6 +10,13 @@ export class FooterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.YearNow();
   }
+
+  YearNow(): void {
+    var d = new Date();
+    var year = d.getFullYear();
+    document.getElementById("year").append(year.toString());
+  } 
 
 }
