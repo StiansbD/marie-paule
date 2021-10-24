@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -35,7 +36,8 @@ import { DeleteTableauComponent } from './admin/delete-tableau/delete-tableau.co
   ],
   providers: [
     AuthService,
-    PortfolioService
+    PortfolioService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
