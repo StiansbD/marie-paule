@@ -1,5 +1,90 @@
-<div class="container">
-    <h1>Formulaire d'ajout d'un Tableau</h1>
-    <br>
-    Ajouter un tableau pour l'exposer sur le site.
+<div class="page">
+    <div class="container">
+        <h2>Formulaire d'ajout d'un Tableau</h2>
+        <br>
+        Ajouter un tableau pour le site.
+    </div>
+    
+    <form class="inputs" [formGroup]="createTableauForm" (ngSubmit)="onSubmit()">
+        <label for="titre" class="form-label">Ajouter un Titre</label>
+        <div class="input-group">
+            <input type="text" id="titre" formControlName="titre" class="form-control" placeholder="Entrer un titre"/>
+        </div>
+
+        <label for="description" class="form-label">Ajouter une Description</label>
+        <div class="input-group">
+            <textarea 
+                class="form-control" 
+                id="description" 
+                formControlName="description"
+                aria-label="With textarea" 
+                placeholder="Entrer une description"
+            ></textarea>
+        </div>
+
+        <label for="image" class="form-label">Ajouter une Image</label>
+        <div class="input-group">
+            <input 
+                type="file" 
+                class="form-control-file" 
+                id="image" 
+                formControlName="image"
+                aria-describedby="image" 
+                aria-label="Upload"
+                accept="image/*"
+                (change)="detectFiles($event)"
+            >
+        </div>
+
+        <label for="date" class="form-label">Ajouter la Date de Peinture</label>
+        <div class="input-group">
+            <input type="date" id="date" formControlName="date" class="form-control"/>
+        </div>
+
+        <label for="vendre" class="form-label">Mise en ventes du Tableau</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="vendre">À vendre ?</label>
+            </div>
+            <select class="custom-select" id="vendre" formControlName="vendre">
+              <option selected>Choisir...</option>
+              <option value="1">Oui</option>
+              <option value="0">Non</option>
+            </select>
+        </div>
+
+        <label for="prix" class="form-label">Ajouter un Prix</label>
+        <div class="input-group">
+            <input type="number" aria-label="Prix" min="0" id="prix" formControlName="prix" class="form-control" placeholder="0" value="0"/>
+            <div class="input-group-append">
+                <span class="input-group-text">€</span>
+            </div>
+        </div>
+
+        <label for="" class="form-label">Dimension du Tableau</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Hauteur</span>
+            </div>
+            <input type="number" aria-label="Hauteur" min="0" id="hauteur" formControlName="hauteur" class="form-control"/>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Largeur</span>
+            </div>
+            <input type="number" aria-label="Largeur" min="0" id="largeur" formControlName="largeur" class="form-control"/>
+        </div>
+
+        <label for="categorie" class="form-label">Définir une Catégorie</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="vendre">Catégories</label>
+            </div>
+            <select class="custom-select" id="categorie" formControlName="categorie" value="Autres">
+                <option selected>Choisir...</option>
+                <option value="1">Paysage</option>
+                <option value="2">Personnage</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-info" [disabled]="createTableauForm.invalid"><i class="ri-file-add-line"></i> Ajouter un tableau</button>
+    </form>
 </div>

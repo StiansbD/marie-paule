@@ -11,6 +11,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ConnexionComponent } from './admin/connexion/connexion.component';
 import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { PortfolioService } from './services/portfolio.service';
 import { SingleTableauComponent } from './portfolio/single-tableau/single-tableau.component';
 import { AddTableauComponent } from './admin/add-tableau/add-tableau.component';
@@ -36,6 +37,7 @@ import { DeleteTableauComponent } from './admin/delete-tableau/delete-tableau.co
   ],
   providers: [
     AuthService,
+    AuthGuardService,
     PortfolioService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],

@@ -1,13 +1,38 @@
-form {
-    background-color: var(--color-main);
+.page {
+    background-color: white;
     border-radius: 5px;
-    margin-bottom: 40%;
+    padding: 1rem;
+
+    & .inputs {
+        margin-top: 2rem;
+        border-radius: 5px;
+
+        & .input-group {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .btn:disabled {
+        color: var(--purple);
+        border-color: var(--purple);
+    }
 }
 
-label {
-    letter-spacing: 2px;
-}
+/*-- media queries --*/
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
 
-button {
-    letter-spacing: 2px;
+    .page {
+        padding: 5rem;
+        box-shadow: 1px 1px 5px #555;
+
+        & .inputs {
+            padding: 2rem;
+            border: 1px solid rgba($color: #555, $alpha: 0.2);
+
+            & .input-group {
+                margin-bottom: 2rem;
+            }
+        }
+    }
 }

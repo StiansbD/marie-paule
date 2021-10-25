@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: "portfolio", component: PortfolioComponent },
   { path: "home", component: HomeComponent },
   { path: "admin/connexion", component: ConnexionComponent },
-  { path: "admin/add-tableau", component: AddTableauComponent },
+  { path: "admin/add-tableau", canActivate: [AuthGuardService], component: AddTableauComponent },
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "**", redirectTo: "home" }
 ];

@@ -3,34 +3,14 @@
     class="sidebar-item mobile right menu" 
     onclick="menu_toggle()"
     >
-        MENU
+    <i class="ri-menu-line"></i> MENU
     </div>
     <div id="sidebar-menu"
     onclick="menu_toggle()">
-    <div class="sidebar-head">
-        Marie-Paule Création
+    <div class="sidebar-head" routerLink="admin/connexion" *ngIf="!isAuth">
+        Marie-Paule
     </div>
-        <!-- VISITEURS -->
-        <div class="sidebar-item" routerLinkActive="is-active" *ngIf="!isAuth">
-            <a 
-            routerLink="home"
-            >Accueil</a>
-        </div>
-        <div class="sidebar-item" routerLinkActive="is-active" *ngIf="!isAuth">
-            <a 
-            routerLink="portfolio"
-            >Tableaux</a>
-        </div>
-        <div class="sidebar-item hide" *ngIf="!isAuth">
-            <a href="">Expositions</a>
-        </div>
-        <div class="sidebar-item" *ngIf="!isAuth">
-            <a href="">À propos</a>
-        </div>
-        <div class="sidebar-item" *ngIf="!isAuth">
-            <a href="">Contact</a>
-        </div>
-        
+
         <!-- ADMIN -->
         <div class="sidebar-item" routerLinkActive="is-active" *ngIf="isAuth">
             <a 
@@ -39,28 +19,33 @@
         </div>
         <div class="sidebar-item" routerLinkActive="is-active" *ngIf="isAuth">
             <a 
-            routerLink=""
+            href=""
             >Supprimer</a>
         </div>
-        <div class="sidebar-item" routerLinkActive="is-active" *ngIf="isAuth">
+        <div class="sidebar-item" routerLinkActive="is-active" *ngIf="isAuth" style="border-bottom: 1px solid;">
             <a
             (click)="onSignOut()"
             >Déconnexion</a>
         </div>
-
-        <!-- FOOTER SIDEBAR -->
-        <!--
-        <div class="sidebar-footer">
-            <p>
-                Copyright © Marie-Paule <span id="year"></span>. Tous droit réservé.
-            </p>
-            <p>
-                Fait avec <span style="color: red;">&hearts;</span> par <a href="https://www.chrisblnc.fr" target="_blank">Christian</a>.
-            </p>
-            <p>
-                En cas de problème technique merci d'écrire directement à <a routerLink="admin/connexion">www.dev@marie.com</a>.
-            </p>
+        <!-- VISITEURS -->
+        <div class="sidebar-item" routerLinkActive="is-active">
+            <a 
+            routerLink="home"
+            >Accueil</a>
         </div>
-        -->
+        <div class="sidebar-item" routerLinkActive="is-active">
+            <a 
+            routerLink="portfolio"
+            >Tableaux</a>
+        </div>
+        <div class="sidebar-item hide">
+            <a href="">Expositions</a>
+        </div>
+        <div class="sidebar-item">
+            <a href="">À propos</a>
+        </div>
+        <div class="sidebar-item">
+            <a href="">Contact</a>
+        </div>
     </div>
 </div>

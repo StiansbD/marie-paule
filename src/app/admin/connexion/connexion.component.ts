@@ -39,7 +39,7 @@ export class ConnexionComponent implements OnInit {
 
     this.authService.signInUser(email, password).then(
       () => {
-        this.router.navigate(['admin/ajouter-tableau']);
+        this.router.navigate(['admin/add-tableau']);
       },
       (error) => {
         if (error == "auth/user-not-found") {

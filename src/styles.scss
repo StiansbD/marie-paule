@@ -21,6 +21,7 @@
 
 html {
     background-color: var(--purple-alpha);
+    overflow-x: hidden;
 }
 
 // body general option
@@ -75,6 +76,19 @@ body {
 
 .no-scroll {
     overflow-y: hidden;
+}
+
+button {
+    letter-spacing: 2px;
+
+    &.btn:disabled {
+        background-color: rgba($color: #000000, $alpha: 0.0);
+    }
+
+    &.btn {
+        background-color: var(--purple-alpha);
+        border-color: var(--purple-alpha);
+    }
 }
 
 /*-------- media queries --------*/

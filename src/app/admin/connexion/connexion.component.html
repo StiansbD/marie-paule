@@ -1,13 +1,13 @@
-<div class="container">
-  <h1>Connexion administrateur</h1>
-</div>
-<br>
-<div class="container">
-  Connexion pour un administrateur du site. Veuillez utiliser les informations de connexion fournir par le gérant du site.
-</div>
-<br><br>
-<div class="container">
-  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()"> 
+<div class="page">
+  <div class="container">
+    <h1>Connexion administrateur</h1>
+  </div>
+
+  <div class="container">
+    Connexion pour un administrateur du site. Veuillez utiliser les informations de connexion fournir par le gérant du site.
+  </div>
+
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" class="inputs"> 
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Adresse mail</label>
         <input 
@@ -29,6 +29,6 @@
       </div>
         <div style="color: red;">{{ errorMessage }}</div>
       <br><br>
-      <button type="submit" class="btn btn-info" [disabled]="signinForm.invalid"><i class="fas fa-sign-in-alt"></i> Connexion</button>
+      <button type="submit" class="btn btn-info" [disabled]="signinForm.invalid"><i class="ri-login-box-line"></i> Connexion</button>
   </form>
 </div>
