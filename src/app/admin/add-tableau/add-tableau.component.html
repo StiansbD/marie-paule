@@ -80,8 +80,11 @@
             </div>
             <select class="custom-select" id="categorie" formControlName="categorie" value="Autres">
                 <option selected>Choisir...</option>
-                <option value="1">Paysage</option>
-                <option value="2">Personnage</option>
+                <option 
+                    value="{{categories.length-i-1}}"
+                    [id]="i"
+                    *ngFor="let categorie of categories; let i = index"
+                >{{categories[categories.length-i-1].nom}}</option>
             </select>
         </div>
 

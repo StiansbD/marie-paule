@@ -10,6 +10,6 @@ export class Tableaux {
         public price: number,
         public height: number,
         public length: number,
-        public categorie: string
+        public categorie: number
     ) {}
 }

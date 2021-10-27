@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SingleTableauComponent } from './portfolio/single-tableau/single-tableau.component';
 import { AddTableauComponent } from './admin/add-tableau/add-tableau.component';
+import { DeleteTableauComponent } from './admin/delete-tableau/delete-tableau.component';
 
 const routes: Routes = [
   { path: "portfolio/:id", component: SingleTableauComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "admin/connexion", component: ConnexionComponent },
   { path: "admin/add-tableau", canActivate: [AuthGuardService], component: AddTableauComponent },
+  { path: "admin/delete-tableau", canActivate: [AuthGuardService], component: DeleteTableauComponent },
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "**", redirectTo: "home" }
 ];

@@ -35,6 +35,10 @@
         text-align: center;
     }
 
+    & #sidebar-menu.is-visible .sidebar-item:first-child {
+        padding-top: 20%;
+    }
+
     & #sidebar-menu.is-visible .sidebar-item {
         padding-top: 10%;
         margin-left: -5px;
@@ -96,9 +100,10 @@
         & .sidebar-item {
             padding: 1rem 0rem;
         }
-    
+
         & #sidebar-menu.is-visible .sidebar-item {
             padding: 1rem 0rem;
+            margin-left: 0px;
         }
     
         & .sidebar-footer {

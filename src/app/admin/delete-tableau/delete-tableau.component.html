@@ -1,1 +1,38 @@
-<p>delete-tableau works!</p>
+<div class="card-columns">
+    <div 
+        class="card"
+        [id]="i"
+        *ngFor="let tableau of tableaux; let i = index"
+    >
+        <img [src]="tableaux[tableaux.length-i-1].image" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{tableaux[tableaux.length-i-1].title}}</h5>
+            <p class="card-text">{{tableaux[tableaux.length-i-1].description}}</p>
+        </div>
+        <ul class="list-group list-group-flush text-muted">
+            <li class="list-group-item">Date de peinture : <br>
+                <small>{{tableaux[tableaux.length-i-1].date_rea | date: 'd MMM y'}}</small>
+            </li>
+            <li class="list-group-item">Dimension : <br>
+                <small>{{tableaux[tableaux.length-i-1].height}}cm x {{tableaux[tableaux.length-i-1].length}}cm</small>
+                
+            </li>
+            <li class="list-group-item" *ngIf="tableaux[tableaux.length-i-1].price && tableaux[tableaux.length-i-1].to_sell">
+                Prix : <small>{{tableaux[tableaux.length-i-1].price}}€</small>
+            </li>
+            <li class="list-group-item">
+                Catégorie : <br>
+                <small>{{categories[tableaux[tableaux.length-i-1].categorie]?.nom}}</small>
+            </li>
+        </ul>
+        <div class="card-body">
+            <button (click)="onClick(tableaux[tableaux.length-i-1])" class="btn btn-info"><i class="ri-delete-bin-line"></i> Supprimer</button>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+                Dernière mise à jour : <br>
+                {{tableaux[tableaux.length-i-1].date | date: 'd MMM y à H:mm'}}
+            </small>
+        </div>
+    </div>
+</div>

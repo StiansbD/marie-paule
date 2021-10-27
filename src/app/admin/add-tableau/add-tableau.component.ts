@@ -5,6 +5,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PortfolioService } from '../../services/portfolio.service';
 import { Tableaux } from '../../models/tableaux.model';
 
+import { CategorieService } from '../../services/categorie.service';
+import { Categorie } from 'src/app/models/categorie.model';
+
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-add-tableau',
   templateUrl: './add-tableau.component.html',
@@ -18,13 +24,25 @@ export class AddTableauComponent implements OnInit {
   fileUrl: string;
   fileUploaded = false;
 
+  categories: Categorie[];
+  categoriesSubscription: Subscription;
+
   constructor(
     private formBuilder: FormBuilder,
-    private portfolioService: PortfolioService
+    private portfolioService: PortfolioService,
+    private categorieService: CategorieService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.initForm();
+
+    this.categoriesSubscription = this.categorieService.categoriesSubject.subscribe(
+      (categories: Categorie[]) => {
+        this.categories = categories;
+      }
+    );
+    this.categorieService.emitCategorie();
   }
 
   initForm() {
@@ -47,11 +65,11 @@ export class AddTableauComponent implements OnInit {
     const date = Date.now();
     const description = this.createTableauForm.get('description').value;
     const date_rea = this.createTableauForm.get('date').value;
-    const vendre = this.createTableauForm.get('vendre').value;
     const prix = this.createTableauForm.get('prix').value || 0;
     const hauteur = this.createTableauForm.get('hauteur').value;
     const largeur = this.createTableauForm.get('largeur').value;
-    const categorie = this.createTableauForm.get('categorie').value || "0";
+    const categorie = Number(this.createTableauForm.get('categorie').value) || 0;
+    const vendre = Boolean(Number(this.createTableauForm.get('vendre').value));
 
     const newTableau = new Tableaux(author, titre, date, description, date_rea, vendre, prix, hauteur, largeur, categorie);
 
@@ -60,6 +78,8 @@ export class AddTableauComponent implements OnInit {
     }
 
     this.portfolioService.createNewTableau(newTableau);
+
+    this.router.navigate(['portfolio']);
   }
 
   detectFiles(event) {
