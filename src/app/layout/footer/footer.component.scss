@@ -1,23 +1,37 @@
-footer.footer {
-    width: 100vw;
-    margin: 0;
-    padding: 3rem 4rem 5rem;
-    text-align: left;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+footer {
+    &.footer {
+        width: 100vw;
+        margin: 0;
+        padding: 2rem;
+        padding-right: 3rem;
+        text-align: left;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    &.footer p {
+        font-size: 12px;
+    }
+    
+    & .prenom {
+        font-size: 20px !important;
+    }
 }
 
-footer.footer p {
-    font-size: 12px;
-}
 
 /*-- media queries --*/
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    footer.footer {
-        padding: 5rem 15rem 8rem;
-    }
+    footer {
+        &.footer {
+            padding-left: 10%;
+        }
 
-    footer.footer p {
-        font-size: 14px;
+        &.footer p {
+            font-size: 16px;
+        }
+
+        & .prenom {
+            font-size: 25px !important;
+        }
     }
 }
