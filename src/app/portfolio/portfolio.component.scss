@@ -1,13 +1,23 @@
 .card {
-    border: 1px solid var(--purple);
     border-radius: 5px;
     margin: 0.75rem;
+    color: var(--purple);
+    text-decoration: none;
+    transition: 0.25s;
 }
 
 .card:hover, .card:active, .card:focus {
-    box-shadow: 10px 10px 25px -10px var(--purple-alpha);
-    transform: translateY(-2px);
+    transform: scale(0.98);
+    box-shadow: 1px 1px 5px #555;
     cursor: pointer;
+}
+
+.badge {
+    margin: 2%;
+}
+
+.badge-secondary {
+    background-color: var(--purple-alpha);
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */

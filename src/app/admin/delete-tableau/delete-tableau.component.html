@@ -13,7 +13,7 @@
             <li class="list-group-item">Date de peinture : <br>
                 <small>{{tableaux[tableaux.length-i-1].date_rea | date: 'd MMM y'}}</small>
             </li>
-            <li class="list-group-item">Dimension : <br>
+            <li class="list-group-item">Dimensions : <br>
                 <small>{{tableaux[tableaux.length-i-1].height}}cm x {{tableaux[tableaux.length-i-1].length}}cm</small>
                 
             </li>
@@ -22,7 +22,8 @@
             </li>
             <li class="list-group-item">
                 Catégorie : <br>
-                <small>{{categories[tableaux[tableaux.length-i-1].categorie]?.nom}}</small>
+                <span class="badge badge-info" *ngIf="tableaux[tableaux.length-i-1].to_sell">À vendre</span>
+                <span class="badge badge-secondary">{{categories[tableaux[tableaux.length-i-1].categorie]?.nom}}</span>
             </li>
         </ul>
         <div class="card-body">
@@ -30,7 +31,7 @@
         </div>
         <div class="card-footer">
             <small class="text-muted">
-                Dernière mise à jour : <br>
+                Mise à jour : <br>
                 {{tableaux[tableaux.length-i-1].date | date: 'd MMM y à H:mm'}}
             </small>
         </div>

@@ -7,7 +7,6 @@ import { CategorieService } from '../../services/categorie.service';
 import { Categorie } from 'src/app/models/categorie.model';
 
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-tableau',
@@ -24,8 +23,7 @@ export class DeleteTableauComponent implements OnInit {
 
   constructor(
     private portfolioService: PortfolioService,
-    private categorieService: CategorieService,
-    private router: Router
+    private categorieService: CategorieService
   ) { }
 
   ngOnInit(): void {

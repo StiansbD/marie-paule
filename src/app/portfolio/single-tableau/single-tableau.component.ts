@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Subscription } from 'rxjs';
-import { Tableaux } from 'src/app/models/tableaux.model';
-import { PortfolioService } from 'src/app/services/portfolio.service';
-import { Location } from '@angular/common';
+
+import { Tableaux } from '../../models/tableaux.model';
+import { PortfolioService } from '../../services/portfolio.service';
+
+import { CategorieService } from '../../services/categorie.service';
+import { Categorie } from '../../models/categorie.model';
 
 @Component({
   selector: 'app-single-tableau',
@@ -16,23 +20,15 @@ export class SingleTableauComponent implements OnInit {
   tableauID: number;
   tableauSubscription: Subscription;
 
+  categories: Categorie[];
+  categoriesSubscription: Subscription;
+
   constructor(
     private route: ActivatedRoute,
     private portfolioService: PortfolioService,
-    private location: Location,
+    private categorieService: CategorieService,
     private router: Router
-  ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = function() {
-      return false;
-    }
-
-    this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-        this.router.navigated = false;
-      }
-    });
-
-  }
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
@@ -42,10 +38,20 @@ export class SingleTableauComponent implements OnInit {
       }
     );
     this.portfolioService.emitPortfolio();
+
+    this.categoriesSubscription = this.categorieService.categoriesSubject.subscribe(
+      (categories: Categorie[]) => {
+        this.categories = categories;
+      }
+    );
+    this.categorieService.emitCategorie();
   }
 
-  onBack() {
-    this.location.back();
+  onBack(): void {
+    this.router.navigate(['portfolio']);
   }
 
+  reverseImg(): void {
+    document.getElementById('card').classList.toggle('reverse');
+  }
 }

@@ -1,14 +1,31 @@
 <div class="container">
-    <a (click)="onBack()">Retour</a>
+    <a class="btn" (click)="onBack()"><i class="ri-arrow-go-back-line"></i> Retour</a>
 </div>
-<br><br>
-<div class="container">
-    <a onclick="reverse_img(this)">
-        <img [src]="tableau.image">
-        <div href="#" class="img-back description">
-            Description :
-            <br><br>
-            <div>{{tableau.description}}</div>
+
+<div class="card" (click)="reverseImg()" id="card">
+    <img [src]="tableau?.image" class="card-img" alt="{{tableau?.title}}">
+    <div class="card-img-overlay">
+        <h5 class="card-title">{{ tableau?.title }}</h5>
+        <p class="card-text">{{ tableau?.description }}</p>
+        <span class="card-text" *ngIf="tableau?.price">
+            <span class="text-muted">Prix :</span> 
+            <h3>{{ tableau?.price }}€</h3>
+        </span>
+        <ul class="list-group list-group-flush text-muted">
+            <li class="list-group-item">
+                <small>Peint le : {{ tableau?.date_rea | date: 'd MMM y' }}</small>
+            </li>
+            <li class="list-group-item">
+                <small>Dimensions : {{ tableau?.height }}cm x {{ tableau?.length }}cm</small>
+                
+            </li>
+            <li class="list-group-item">
+                <span class="badge badge-info" *ngIf="tableau?.to_sell">À vendre</span>
+                <span class="badge badge-secondary">{{categories[tableau?.categorie]?.nom}}</span>
+            </li>
+        </ul>
+        <div class="card-footer">
+            <small class="text-muted">Mise à jour le {{ tableau?.date | date: 'd MMM y à  H:mm'}}</small>
         </div>
-    </a>
+    </div>
 </div>
