@@ -58,15 +58,12 @@ body {
 
 /*-------- éléments générales --------*/
 // carousel
-.carousel { 
-    border: 1px groove var(--purple);
-    border-radius: 5px;
-    box-shadow: 20px 20px 40px -5px var(--purple-alpha);
-}
+.carousel {
+    box-shadow: 1px 1px 5px #555;
 
-.carousel .carousel-item img {
-    object-fit: cover;
-    height: 80vh;
+    & img {
+        border-radius: 5px;
+    }
 }
 
 .manuscrit {
@@ -79,7 +76,7 @@ body {
     overflow-y: hidden;
 }
 
-button {
+button, a {
     letter-spacing: 2px;
 
     &.btn:disabled {

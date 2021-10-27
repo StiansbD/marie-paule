@@ -1,0 +1,9 @@
+.jumbotron {
+    background-color: #fff;
+}
+
+.carousel-inner {
+    &:hover {
+        cursor: pointer;
+    }
+}
