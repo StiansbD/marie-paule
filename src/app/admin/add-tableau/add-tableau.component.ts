@@ -8,6 +8,9 @@ import { Tableaux } from '../../models/tableaux.model';
 import { CategorieService } from '../../services/categorie.service';
 import { Categorie } from 'src/app/models/categorie.model';
 
+import { EtatService } from '../../services/etat.service';
+import { Etat } from 'src/app/models/etat.model';
+
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -27,10 +30,14 @@ export class AddTableauComponent implements OnInit {
   categories: Categorie[];
   categoriesSubscription: Subscription;
 
+  etats: Etat[];
+  etatsSubscription: Subscription;
+
   constructor(
     private formBuilder: FormBuilder,
     private portfolioService: PortfolioService,
     private categorieService: CategorieService,
+    private etatService: EtatService,
     private router: Router
   ) { }
 
@@ -43,6 +50,13 @@ export class AddTableauComponent implements OnInit {
       }
     );
     this.categorieService.emitCategorie();
+
+    this.etatsSubscription = this.etatService.etatsSubject.subscribe(
+      (etats: Etat[]) => {
+        this.etats = etats;
+      }
+    );
+    this.etatService.emitEtat();
   }
 
   initForm() {
@@ -51,12 +65,11 @@ export class AddTableauComponent implements OnInit {
       description: [''],
       image: ['', [Validators.required]],
       date: ['', [Validators.required]],
-      vendre: [''],
-      vendu: [''],
       prix: [''],
       hauteur: ['', [Validators.required]],
       largeur: ['', [Validators.required]],
-      categorie: ['']
+      categorie: [''],
+      etat: ['']
     });
   }
 
@@ -69,11 +82,10 @@ export class AddTableauComponent implements OnInit {
     const prix = this.createTableauForm.get('prix').value || 0;
     const hauteur = this.createTableauForm.get('hauteur').value;
     const largeur = this.createTableauForm.get('largeur').value;
-    const vendu = Boolean(Number(this.createTableauForm.get('vendu').value)) || false;
     const categorie = Number(this.createTableauForm.get('categorie').value) || 0;
-    const vendre = /*Boolean(Number(this.createTableauForm.get('vendre').value)) ||*/ false;
+    const etat = Number(this.createTableauForm.get('etat').value) || 0;
 
-    const newTableau = new Tableaux(author, titre, date, description, date_rea, vendre, prix, hauteur, largeur, categorie, vendu);
+    const newTableau = new Tableaux(author, titre, date, description, date_rea, prix, hauteur, largeur, categorie, etat);
 
     if (this.fileUrl && this.fileUrl !== "") {
       newTableau.image = this.fileUrl;

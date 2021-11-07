@@ -90,6 +90,21 @@
                     </select>
                 </div>
 
+                <label for="categorie" class="form-label">Définir état du Tableau <span class="text-muted">(défaut : Aucun)</span></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="vendre">État</label>
+                    </div>
+                    <select class="custom-select" id="etat" formControlName="etat" value="Autres">
+                        <option selected>Choisir...</option>
+                        <option 
+                            value="{{etats.length-i-1}}"
+                            [id]="i"
+                            *ngFor="let etat of etats; let i = index"
+                        >{{etats[etats.length-i-1].nom}}</option>
+                    </select>
+                </div>
+
                 <!-- display: none 
                 <label for="vendre" class="form-label">Mise en ventes du Tableau <span class="text-muted">(défaut : Non)</span></label>
                 <div class="input-group">
