@@ -9,6 +9,9 @@ import { PortfolioService } from '../../services/portfolio.service';
 import { CategorieService } from '../../services/categorie.service';
 import { Categorie } from '../../models/categorie.model';
 
+import { EtatService } from '../../services/etat.service';
+import { Etat } from 'src/app/models/etat.model';
+
 @Component({
   selector: 'app-single-tableau',
   templateUrl: './single-tableau.component.html',
@@ -23,10 +26,14 @@ export class SingleTableauComponent implements OnInit {
   categories: Categorie[];
   categoriesSubscription: Subscription;
 
+  etats: Etat[];
+  etatsSubscription: Subscription;
+
   constructor(
     private route: ActivatedRoute,
     private portfolioService: PortfolioService,
     private categorieService: CategorieService,
+    private etatService: EtatService,
     private router: Router
   ) {}
 
@@ -45,6 +52,13 @@ export class SingleTableauComponent implements OnInit {
       }
     );
     this.categorieService.emitCategorie();
+    
+    this.etatsSubscription = this.etatService.etatsSubject.subscribe(
+      (etats: Etat[]) => {
+        this.etats = etats;
+      }
+    );
+    this.etatService.emitEtat();
   }
 
   onBack(): void {

@@ -27,9 +27,8 @@
             <li class="list-group-item">
                 <small>Peinture : {{categories[tableau?.categorie]?.nom}}</small>
             </li>
-            <li class="list-group-item" *ngIf="tableau?.to_sell || tableau?.sell">
-                <span class="badge" *ngIf="tableau?.to_sell">À vendre</span>
-                <span class="badge badge-sell" *ngIf="tableau?.sell">Vendu</span>
+            <li class="list-group-item" *ngIf="tableau?.etat">
+                <span class="badge badge-sell">{{ etats[tableau?.etat]?.nom }}</span>
             </li>
         </ul>
         <div class="card-footer">

@@ -18,6 +18,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { PortfolioService } from './services/portfolio.service';
 import { SingleTableauComponent } from './portfolio/single-tableau/single-tableau.component';
 import { AddTableauComponent } from './admin/add-tableau/add-tableau.component';
+import { CategorieService } from './services/categorie.service';
+import { EtatService } from './services/etat.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { AddTableauComponent } from './admin/add-tableau/add-tableau.component';
     AuthService,
     AuthGuardService,
     PortfolioService,
+    CategorieService,
+    EtatService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
