@@ -54,6 +54,6 @@ export class HomeComponent implements OnInit {
   }
 
   toAdmin(): void {
-    this.router.navigate(['admin/connexion']);
+    this.router.navigate(['admin/login']);
   }
 }

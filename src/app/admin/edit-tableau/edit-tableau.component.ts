@@ -59,11 +59,12 @@ export class EditTableauComponent implements OnInit {
   }
 
   onEdit(id): void {
-    this.router.navigate(['admin/edit-tableau', id]);
+    this.router.navigate(['admin/edit', id]);
   }
 
   onDelete(tableau: Tableaux): void {
     if (confirm("Vous êtes sur le point de supprimer un tableau, voulez-vous continuer ?")) {
+      this.portfolioService.removeFile(tableau.image);
       this.portfolioService.removeTableau(tableau);
     }
   }

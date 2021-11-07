@@ -10,7 +10,6 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ConnexionComponent } from './admin/connexion/connexion.component';
-import { DeleteTableauComponent } from './admin/delete-tableau/delete-tableau.component';
 import { EditTableauComponent } from './admin/edit-tableau/edit-tableau.component';
 import { EditSingleTableauComponent } from './admin/edit-tableau/edit-single-tableau/edit-single-tableau.component';
 import { AuthService } from './services/auth.service';
@@ -32,7 +31,6 @@ import { EtatService } from './services/etat.service';
     SingleTableauComponent,
     EditSingleTableauComponent,
     AddTableauComponent,
-    DeleteTableauComponent,
     EditTableauComponent
   ],
   imports: [

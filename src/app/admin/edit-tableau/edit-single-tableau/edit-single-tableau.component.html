@@ -1,0 +1,127 @@
+<div class="page">
+    <div class="container">
+        <h2>Formulaire d'ajout d'un Tableau</h2>
+        <br>
+        Ajouter un tableau pour le site.
+    </div>
+    
+    <form class="inputs" [formGroup]="createTableauForm" (ngSubmit)="onSubmit()">
+        <label for="titre" class="form-label">
+            Modifier le Titre
+        </label>
+        <div class="input-group">
+            <input type="text" id="titre" formControlName="titre" class="form-control" placeholder="Entrer un titre" value="{{ tableau?.title }}"/>
+        </div>
+
+        <div class="img">
+            <img [src]="tableau?.image" alt="{{tableau?.title}}">
+        </div>
+        <br>
+
+        <label for="date" class="form-label">Modifier la Date de Peinture</label>
+        <div class="input-group">
+            <input type="date" id="date" formControlName="date" class="form-control" value="{{ tableau?.date_rea }}"/>
+        </div>
+
+        <label for="" class="form-label">
+            Modifier les dimensions du Tableau
+        </label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Largeur</span>
+            </div>
+            <input type="number" aria-label="Largeur" min="0" id="largeur" formControlName="largeur" class="form-control" value="{{ tableau?.length }}"/>
+            <div class="input-group-prepend">
+              <span class="input-group-text">Hauteur</span>
+            </div>
+            <input type="number" aria-label="Hauteur" min="0" id="hauteur" formControlName="hauteur" class="form-control" value="{{ tableau?.height }}"/>
+        </div>
+
+        <!-- optionnelle -->
+
+        <div class="border-bottom"></div>
+        <br>
+
+        <p>
+            <a 
+                (click)="onCollapse()"  
+                class="text-muted" 
+                style="font-weight: lighter; width: 100%; display: inline-flex;" 
+                data-toggle="collapse" 
+                href="#collapseExample" 
+                role="button" 
+                aria-expanded="false" 
+                aria-controls="collapseExample"
+            >
+                <span id="+"><i class="ri-add-line"></i></span> <span class="ope">Optionnelle</span>
+            </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                
+                <label for="description" class="form-label">
+                    Modifier la Description <span class="text-muted">(défaut : <i>vide</i>)</span>
+                </label>
+                <div class="input-group">
+                    <textarea 
+                        class="form-control" 
+                        id="description" 
+                        formControlName="description"
+                        aria-label="With textarea" 
+                        placeholder="Entrer une description"
+                        value="{{ tableau?.description }}"
+                    ></textarea>
+                </div>
+
+                <label for="categorie" class="form-label">
+                    Modifier la technique de Peinture <span class="text-muted">(défaut : Acrylique)</span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="vendre">Technique</label>
+                    </div>
+                    <select class="custom-select" id="categorie" formControlName="categorie">
+                        <option value="{{tableau?.categorie}}" selected>{{categories[tableau?.categorie]?.nom}}</option>
+                        <option 
+                            value="{{categories.length-i-1}}"
+                            [id]="i"
+                            *ngFor="let categorie of categories; let i = index"
+                        >{{categories[categories.length-i-1].nom}}</option>
+                    </select>
+                </div>
+
+                <label for="categorie" class="form-label">
+                    Modifier l'état du Tableau <span class="text-muted">(défaut : Aucun)</span>
+                </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="vendre">État</label>
+                    </div>
+                    <select class="custom-select" id="etat" formControlName="etat" value="Autres">
+                        <option value="{{ tableau?.etat }}" selected>{{ etats[tableau?.etat]?.nom }}</option>
+                        <option 
+                            value="{{etats.length-i-1}}"
+                            [id]="i"
+                            *ngFor="let etat of etats; let i = index"
+                        >{{etats[etats.length-i-1].nom}}</option>
+                    </select>
+                </div>
+                
+                <label for="prix" class="form-label">
+                    Ajouter un Prix <span class="text-muted">(défaut : 0€)</span>
+                </label>
+                <div class="input-group">
+                    <input type="number" aria-label="Prix" min="0" id="prix" formControlName="prix" class="form-control" placeholder="0" value="{{ tableau?.price }}"/>
+                    <div class="input-group-append">
+                        <span class="input-group-text">€</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-info" [disabled]="createTableauForm.invalid"><i class="ri-edit-2-line"></i> Modifier le tableau</button>
+    </form>
+</div>

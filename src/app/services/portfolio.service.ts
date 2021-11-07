@@ -53,19 +53,6 @@ export class PortfolioService {
   }
 
   removeTableau(tableau: Tableaux) {
-    if (tableau.image) {
-      const storageRef = firebase.storage().refFromURL(tableau.image);
-      storageRef.delete().then(
-        () => {
-          console.log("Tableau supprimé avec succés :D");
-        },
-        (error) => {
-          console.log("Le tableau n'a pas pu être supprimé :/");
-          console.error(error);
-        }
-      );
-    }
-
     const tableauIndexToRemove = this.tableaux.findIndex(
       (tableauE1) => {
         if (tableauE1 === tableau) {
@@ -77,6 +64,21 @@ export class PortfolioService {
     this.tableaux.splice(tableauIndexToRemove, 1);
     this.savePortfolio();
     this.emitPortfolio();
+  }
+
+  removeFile(url: string) {
+    if (url) {
+      const storageRef = firebase.storage().refFromURL(url);
+      storageRef.delete().then(
+        () => {
+          console.log("Tableau supprimé avec succés :D");
+        },
+        (error) => {
+          console.log("Le tableau n'a pas pu être supprimé :/");
+          console.error(error);
+        }
+      );
+    }
   }
 
   uploadFile(file: File) {

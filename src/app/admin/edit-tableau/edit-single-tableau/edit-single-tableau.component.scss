@@ -1,0 +1,64 @@
+.page {
+    background-color: white;
+    border-radius: 5px;
+    padding: 1rem;
+
+    & .inputs {
+        margin-top: 2rem;
+        border-radius: 5px;
+
+        & .input-group {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .btn:disabled {
+        color: var(--purple);
+        border-color: var(--purple);
+    }
+
+    & a:hover, a:active, a:focus {
+        text-decoration: none;
+        
+        & span.ope {
+            text-decoration: underline;
+        }
+    }
+
+    & .img {
+        max-width: 100%;
+
+        & img { 
+            height: auto;
+            max-width: 100%;
+        }
+      }
+}
+
+/*-- media queries --*/
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .page {
+        padding: 5rem;
+        box-shadow: 1px 1px 5px #555;
+
+        & .inputs {
+            padding: 2rem;
+            border: 1px solid rgba($color: #555, $alpha: 0.2);
+
+            & .input-group {
+                margin-bottom: 2rem;
+            }
+        }
+
+        & .img {
+            max-width: 50%;
+
+            & img {
+                height: auto;
+                max-width: 100%;
+            }
+          }
+    }
+}
