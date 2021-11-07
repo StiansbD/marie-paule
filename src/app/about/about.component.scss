@@ -10,9 +10,6 @@
         }
 
         .prenom-about {
-            position: absolute;
-            right: 10%;
-
             .prenom {
                 margin-top: 15px;
             }
@@ -29,8 +26,8 @@
     #about {
         .avatar {
             img {
-                height: 40% !important;
-                width: 40% !important;
+                height: 30% !important;
+                width: 30% !important;
             }
         }
     }

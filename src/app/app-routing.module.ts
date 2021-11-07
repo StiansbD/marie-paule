@@ -8,7 +8,6 @@ import { SingleTableauComponent } from './portfolio/single-tableau/single-tablea
 import { AddTableauComponent } from './admin/add-tableau/add-tableau.component';
 import { EditTableauComponent } from './admin/edit-tableau/edit-tableau.component';
 import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 import { EditSingleTableauComponent } from './admin/edit-tableau/edit-single-tableau/edit-single-tableau.component';
 
 const routes: Routes = [
@@ -16,7 +15,6 @@ const routes: Routes = [
   { path: "portfolio", component: PortfolioComponent },
   { path: "home", component: HomeComponent },
   { path: "about", component: AboutComponent },
-  { path: "contact", component: ContactComponent },
   { path: "admin/login", component: ConnexionComponent },
   { path: "admin/add", canActivate: [AuthGuardService], component: AddTableauComponent },
   { path: "admin/edit", canActivate: [AuthGuardService], component:  EditTableauComponent},
