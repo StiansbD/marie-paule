@@ -6,6 +6,9 @@ import { Tableaux } from '../../models/tableaux.model';
 import { CategorieService } from '../../services/categorie.service';
 import { Categorie } from 'src/app/models/categorie.model';
 
+import { EtatService } from '../../services/etat.service';
+import { Etat } from 'src/app/models/etat.model';
+
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -22,9 +25,13 @@ export class EditTableauComponent implements OnInit {
   categories: Categorie[];
   categoriesSubscription: Subscription;
 
+  etats: Etat[];
+  etatsSubscription: Subscription;
+
   constructor(
     private portfolioService: PortfolioService,
     private categorieService: CategorieService,
+    private etatService: EtatService,
     private router: Router
   ) { }
 
@@ -42,9 +49,22 @@ export class EditTableauComponent implements OnInit {
       }
     );
     this.categorieService.emitCategorie();
+
+    this.etatsSubscription = this.etatService.etatsSubject.subscribe(
+      (etats: Etat[]) => {
+        this.etats = etats;
+      }
+    );
+    this.etatService.emitEtat();
   }
 
-  onClick(id): void {
+  onEdit(id): void {
     this.router.navigate(['admin/edit-tableau', id]);
+  }
+
+  onDelete(tableau: Tableaux): void {
+    if (confirm("Vous êtes sur le point de supprimer un tableau, voulez-vous continuer ?")) {
+      this.portfolioService.removeTableau(tableau);
+    }
   }
 }
