@@ -7,13 +7,14 @@ import { CategorieService } from '../../services/categorie.service';
 import { Categorie } from 'src/app/models/categorie.model';
 
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-delete-tableau',
-  templateUrl: './delete-tableau.component.html',
-  styleUrls: ['./delete-tableau.component.scss']
+  selector: 'app-edit-tableau',
+  templateUrl: './edit-tableau.component.html',
+  styleUrls: ['./edit-tableau.component.scss']
 })
-export class DeleteTableauComponent implements OnInit {
+export class EditTableauComponent implements OnInit {
 
   tableaux: Tableaux[];
   tableauxSubscription: Subscription;
@@ -23,7 +24,8 @@ export class DeleteTableauComponent implements OnInit {
 
   constructor(
     private portfolioService: PortfolioService,
-    private categorieService: CategorieService
+    private categorieService: CategorieService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -42,9 +44,7 @@ export class DeleteTableauComponent implements OnInit {
     this.categorieService.emitCategorie();
   }
 
-  onClick(tableau: Tableaux): void {
-    if (confirm("Vous êtes sur le point de supprimer un tableau, voulez-vous continuer ?")) {
-      this.portfolioService.removeTableau(tableau);
-    }
+  onClick(id): void {
+    this.router.navigate(['admin/edit-tableau', id]);
   }
 }

@@ -10,12 +10,14 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ConnexionComponent } from './admin/connexion/connexion.component';
+import { DeleteTableauComponent } from './admin/delete-tableau/delete-tableau.component';
+import { EditTableauComponent } from './admin/edit-tableau/edit-tableau.component';
+import { EditSingleTableauComponent } from './admin/edit-tableau/edit-single-tableau/edit-single-tableau.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { PortfolioService } from './services/portfolio.service';
 import { SingleTableauComponent } from './portfolio/single-tableau/single-tableau.component';
 import { AddTableauComponent } from './admin/add-tableau/add-tableau.component';
-import { DeleteTableauComponent } from './admin/delete-tableau/delete-tableau.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { DeleteTableauComponent } from './admin/delete-tableau/delete-tableau.co
     PortfolioComponent,
     ConnexionComponent,
     SingleTableauComponent,
+    EditSingleTableauComponent,
     AddTableauComponent,
-    DeleteTableauComponent
+    DeleteTableauComponent,
+    EditTableauComponent
   ],
   imports: [
     BrowserModule,

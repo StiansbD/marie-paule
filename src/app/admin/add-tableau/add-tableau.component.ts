@@ -48,10 +48,11 @@ export class AddTableauComponent implements OnInit {
   initForm() {
     this.createTableauForm = this.formBuilder.group({
       titre: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      description: [''],
       image: ['', [Validators.required]],
       date: ['', [Validators.required]],
-      vendre: ['', [Validators.required]],
+      vendre: [''],
+      vendu: [''],
       prix: [''],
       hauteur: ['', [Validators.required]],
       largeur: ['', [Validators.required]],
@@ -63,15 +64,16 @@ export class AddTableauComponent implements OnInit {
     const author = 0;
     const titre = this.createTableauForm.get('titre').value;
     const date = Date.now();
-    const description = this.createTableauForm.get('description').value;
+    const description = this.createTableauForm.get('description').value || "";
     const date_rea = this.createTableauForm.get('date').value;
     const prix = this.createTableauForm.get('prix').value || 0;
     const hauteur = this.createTableauForm.get('hauteur').value;
     const largeur = this.createTableauForm.get('largeur').value;
+    const vendu = Boolean(Number(this.createTableauForm.get('vendu').value)) || false;
     const categorie = Number(this.createTableauForm.get('categorie').value) || 0;
-    const vendre = Boolean(Number(this.createTableauForm.get('vendre').value));
+    const vendre = /*Boolean(Number(this.createTableauForm.get('vendre').value)) ||*/ false;
 
-    const newTableau = new Tableaux(author, titre, date, description, date_rea, vendre, prix, hauteur, largeur, categorie);
+    const newTableau = new Tableaux(author, titre, date, description, date_rea, vendre, prix, hauteur, largeur, categorie, vendu);
 
     if (this.fileUrl && this.fileUrl !== "") {
       newTableau.image = this.fileUrl;
@@ -95,5 +97,16 @@ export class AddTableauComponent implements OnInit {
         this.fileUploaded = true;
       }
     );
+  }
+
+  onCollapse() {
+    const elem = document.getElementById('+');
+    elem.classList.toggle('expanded');
+
+    if (elem.className === 'expanded') {
+      elem.innerHTML = "<span id=\"+\"><i class=\"ri-subtract-line\"></i></span>";
+    } else {
+      elem.innerHTML = "<span id=\"+\"><i class=\"ri-add-line\"></i></span>";
+    }
   }
 }

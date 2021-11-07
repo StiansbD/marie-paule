@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Les Tableaux de <span class="manuscrit">Marie-Paule</span></h1>
+    <h1 class="text-center"><span class="manuscrit">Marie-Paule B</span></h1>
 </div>
 <br><br><br>
 <div class="container">
@@ -17,9 +17,8 @@
             <div class="card-body">
                 <h5 class="card-title">{{tableaux[tableaux.length-i-1].title}}</h5>
             </div>
-            <div class="card-footer">
-                <span class="badge badge-info" *ngIf="tableaux[tableaux.length-i-1].to_sell">À vendre</span>
-                <span class="badge badge-secondary">{{categories[tableaux[tableaux.length-i-1].categorie]?.nom}}</span>
+            <div class="text-right">
+                <a class="btn btn-link">+ d'Info</a>
             </div>
         </a>
     </div>

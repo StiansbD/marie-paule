@@ -1,12 +1,21 @@
 #about {
     .avatar {
-        text-align: center;
+        text-align: right;
 
         img {
             object-fit: cover;
             height: 50%;
             width: 50%;
             border-radius: 50%;
+        }
+
+        .prenom-about {
+            position: absolute;
+            right: 10%;
+
+            .prenom {
+                margin-top: 15px;
+            }
         }
     }
 
@@ -20,8 +29,8 @@
     #about {
         .avatar {
             img {
-                height: 25% !important;
-                width: 25% !important;
+                height: 40% !important;
+                width: 40% !important;
             }
         }
     }

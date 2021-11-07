@@ -1,11 +1,17 @@
-<div class="container">
+<div class="cont">
     <a class="btn" (click)="onBack()"><i class="ri-arrow-go-back-line"></i> Retour</a>
+    <a class="btn" (click)="reverseImg()"><i class="ri-anticlockwise-2-line"></i> + d'Info</a>
+</div>
+
+<br><br>
+
+<div class="cont card title">
+    <h5 class="card-header">{{ tableau?.title }}</h5>
 </div>
 
 <div class="card" (click)="reverseImg()" id="card">
     <img [src]="tableau?.image" class="card-img" alt="{{tableau?.title}}">
     <div class="card-img-overlay">
-        <h5 class="card-title">{{ tableau?.title }}</h5>
         <p class="card-text">{{ tableau?.description }}</p>
         <span class="card-text" *ngIf="tableau?.price">
             <span class="text-muted">Prix :</span> 
@@ -13,15 +19,17 @@
         </span>
         <ul class="list-group list-group-flush text-muted">
             <li class="list-group-item">
-                <small>Peint le : {{ tableau?.date_rea | date: 'd MMM y' }}</small>
+                <small>Date : {{ tableau?.date_rea | date: 'd MMM y' }}</small>
             </li>
             <li class="list-group-item">
-                <small>Dimensions : {{ tableau?.height }}cm x {{ tableau?.length }}cm</small>
-                
+                <small>Dimensions : L {{tableau?.length}}cm x H {{tableau?.height}}cm </small>
             </li>
             <li class="list-group-item">
-                <span class="badge badge-info" *ngIf="tableau?.to_sell">À vendre</span>
-                <span class="badge badge-secondary">{{categories[tableau?.categorie]?.nom}}</span>
+                <small>Peinture : {{categories[tableau?.categorie]?.nom}}</small>
+            </li>
+            <li class="list-group-item" *ngIf="tableau?.to_sell || tableau?.sell">
+                <span class="badge" *ngIf="tableau?.to_sell">À vendre</span>
+                <span class="badge badge-sell" *ngIf="tableau?.sell">Vendu</span>
             </li>
         </ul>
         <div class="card-footer">

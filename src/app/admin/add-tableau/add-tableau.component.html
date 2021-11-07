@@ -11,17 +11,6 @@
             <input type="text" id="titre" formControlName="titre" class="form-control" placeholder="Entrer un titre"/>
         </div>
 
-        <label for="description" class="form-label">Ajouter une Description</label>
-        <div class="input-group">
-            <textarea 
-                class="form-control" 
-                id="description" 
-                formControlName="description"
-                aria-label="With textarea" 
-                placeholder="Entrer une description"
-            ></textarea>
-        </div>
-
         <label for="image" class="form-label">Ajouter une Image</label>
         <div class="input-group">
             <input 
@@ -41,52 +30,105 @@
             <input type="date" id="date" formControlName="date" class="form-control"/>
         </div>
 
-        <label for="vendre" class="form-label">Mise en ventes du Tableau</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="vendre">À vendre ?</label>
-            </div>
-            <select class="custom-select" id="vendre" formControlName="vendre">
-              <option selected>Choisir...</option>
-              <option value="1">Oui</option>
-              <option value="0">Non</option>
-            </select>
-        </div>
-
-        <label for="prix" class="form-label">Ajouter un Prix</label>
-        <div class="input-group">
-            <input type="number" aria-label="Prix" min="0" id="prix" formControlName="prix" class="form-control" placeholder="0" value="0"/>
-            <div class="input-group-append">
-                <span class="input-group-text">€</span>
-            </div>
-        </div>
-
         <label for="" class="form-label">Dimensions du Tableau</label>
         <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Hauteur</span>
-            </div>
-            <input type="number" aria-label="Hauteur" min="0" id="hauteur" formControlName="hauteur" class="form-control"/>
             <div class="input-group-prepend">
                 <span class="input-group-text">Largeur</span>
             </div>
             <input type="number" aria-label="Largeur" min="0" id="largeur" formControlName="largeur" class="form-control"/>
+            <div class="input-group-prepend">
+              <span class="input-group-text">Hauteur</span>
+            </div>
+            <input type="number" aria-label="Hauteur" min="0" id="hauteur" formControlName="hauteur" class="form-control"/>
         </div>
 
-        <label for="categorie" class="form-label">Définir une Catégorie</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="vendre">Catégories</label>
+        <!-- optionnelle -->
+
+        <div class="border-bottom"></div>
+        <br>
+
+        <p>
+            <a 
+                (click)="onCollapse()"  
+                class="text-muted" 
+                style="font-weight: lighter; width: 100%; display: inline-flex;" 
+                data-toggle="collapse" 
+                href="#collapseExample" 
+                role="button" 
+                aria-expanded="false" 
+                aria-controls="collapseExample"
+            >
+                <span id="+"><i class="ri-add-line"></i></span> <span class="ope">Optionnelle</span>
+            </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                
+                <label for="description" class="form-label">Ajouter une Description <span class="text-muted">(défaut : <i>vide</i>)</span></label>
+                <div class="input-group">
+                    <textarea 
+                        class="form-control" 
+                        id="description" 
+                        formControlName="description"
+                        aria-label="With textarea" 
+                        placeholder="Entrer une description"
+                    ></textarea>
+                </div>
+
+                <label for="categorie" class="form-label">Définir technique de Peinture <span class="text-muted">(défaut : Acrylique)</span></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="vendre">Technique</label>
+                    </div>
+                    <select class="custom-select" id="categorie" formControlName="categorie" value="Autres">
+                        <option selected>Choisir...</option>
+                        <option 
+                            value="{{categories.length-i-1}}"
+                            [id]="i"
+                            *ngFor="let categorie of categories; let i = index"
+                        >{{categories[categories.length-i-1].nom}}</option>
+                    </select>
+                </div>
+
+                <!-- display: none 
+                <label for="vendre" class="form-label">Mise en ventes du Tableau <span class="text-muted">(défaut : Non)</span></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text" for="vendre">À vendre ?</label>
+                    </div>
+                    <select class="custom-select" id="vendre" formControlName="vendre">
+                    <option selected>Choisir...</option>
+                    <option value="1">Oui</option>
+                    <option value="0">Non</option>
+                    </select>
+                </div>
+                -->
+
+                
+                <label for="prix" class="form-label">Ajouter un Prix <span class="text-muted">(défaut : 0€)</span></label>
+                <div class="input-group">
+                    <input type="number" aria-label="Prix" min="0" id="prix" formControlName="prix" class="form-control" placeholder="0" value="0"/>
+                    <div class="input-group-append">
+                        <span class="input-group-text">€</span>
+                    </div>
+                </div>
+
+                <label for="vendu" class="form-label">Tableau Vendu <span class="text-muted">(défaut : Non)</span></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                    <label class="input-group-text" for="vendu">Tableau Vendu ?</label>
+                    </div>
+                    <select class="custom-select" id="vendu" formControlName="vendu">
+                    <option selected>Choisir...</option>
+                    <option value="1">Oui</option>
+                    <option value="0">Non</option>
+                    </select>
+                </div>
+
             </div>
-            <select class="custom-select" id="categorie" formControlName="categorie" value="Autres">
-                <option selected>Choisir...</option>
-                <option 
-                    value="{{categories.length-i-1}}"
-                    [id]="i"
-                    *ngFor="let categorie of categories; let i = index"
-                >{{categories[categories.length-i-1].nom}}</option>
-            </select>
         </div>
+
+        <br>
 
         <button type="submit" class="btn btn-info" [disabled]="createTableauForm.invalid"><i class="ri-file-add-line"></i> Ajouter un tableau</button>
     </form>

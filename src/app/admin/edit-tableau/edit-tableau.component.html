@@ -24,15 +24,13 @@
                 Technique de Peinture : <br>
                 <small>{{categories[tableaux[tableaux.length-i-1].categorie]?.nom}}</small>
             </li>
-            <li class="list-group-item" *ngIf="tableaux[tableaux.length-i-1]?.to_sell || tableaux[tableaux.length-i-1]?.sell">
-                <span class="badge" *ngIf="tableaux[tableaux.length-i-1]?.to_sell">À vendre</span>
-                <span class="badge badge-sell" *ngIf="tableaux[tableaux.length-i-1]?.sell">Vendu</span>
+            <li class="list-group-item" *ngIf="tableaux[tableaux.length-i-1].to_sell || tableaux[tableaux.length-i-1].sell">
+                <span class="badge" *ngIf="tableaux[tableaux.length-i-1].to_sell">À vendre</span>
+                <span class="badge badge-sell" *ngIf="tableaux[tableaux.length-i-1].sell">Vendu</span>
             </li>
         </ul>
         <div class="card-body">
-            <button (click)="onClick(tableaux[tableaux.length-i-1])" type="button" class="btn">
-                <i class="ri-delete-bin-line"></i> Supprimer
-            </button>
+            <button (click)="onClick(tableaux.length-i-1)" class="btn btn-info"><i class="ri-edit-2-line"></i> Modifier</button>
         </div>
         <div class="card-footer">
             <small class="text-muted">

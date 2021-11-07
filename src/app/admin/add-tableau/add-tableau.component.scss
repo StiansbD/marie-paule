@@ -16,6 +16,14 @@
         color: var(--purple);
         border-color: var(--purple);
     }
+
+    & a:hover, a:active, a:focus {
+        text-decoration: none;
+        
+        & span.ope {
+            text-decoration: underline;
+        }
+    }
 }
 
 /*-- media queries --*/

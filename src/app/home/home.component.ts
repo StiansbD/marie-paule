@@ -52,4 +52,8 @@ export class HomeComponent implements OnInit {
   goAbout(): void {
     this.router.navigate(['about']);
   }
+
+  toAdmin(): void {
+    this.router.navigate(['admin/connexion']);
+  }
 }

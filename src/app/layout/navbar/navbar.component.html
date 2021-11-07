@@ -7,15 +7,17 @@
     </div>
     <div id="sidebar-menu"
     onclick="menu_toggle()">
-    <div class="sidebar-head prenom" routerLink="admin/connexion" *ngIf="!isAuth">
-        Marie-Paule
-    </div>
-
+    
         <!-- ADMIN -->
         <div class="sidebar-item" routerLinkActive="is-active" *ngIf="isAuth">
             <a 
             routerLink="admin/add-tableau"
             >Ajouter</a>
+        </div>
+        <div class="sidebar-item" routerLinkActive="is-active" *ngIf="isAuth">
+            <a 
+            routerLink="admin/edit-tableau"
+            >Modifier</a>
         </div>
         <div class="sidebar-item" routerLinkActive="is-active" *ngIf="isAuth">
             <a 
@@ -36,7 +38,7 @@
         <div class="sidebar-item" routerLinkActive="is-active">
             <a 
             routerLink="portfolio"
-            >Tableaux</a>
+            >Galerie</a>
         </div>
         <div class="sidebar-item hide">
             <a href="">Expositions</a>
