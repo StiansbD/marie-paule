@@ -64,7 +64,7 @@ export class AddTableauComponent implements OnInit {
       titre: ['', [Validators.required]],
       description: [''],
       image: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      date: [''],
       prix: [''],
       hauteur: ['', [Validators.required]],
       largeur: ['', [Validators.required]],
@@ -78,7 +78,7 @@ export class AddTableauComponent implements OnInit {
     const titre = this.createTableauForm.get('titre').value;
     const date = Date.now();
     const description = this.createTableauForm.get('description').value || "";
-    const date_rea = this.createTableauForm.get('date').value;
+    const date_rea = this.createTableauForm.get('date').value || date;
     const prix = this.createTableauForm.get('prix').value || 0;
     const hauteur = this.createTableauForm.get('hauteur').value;
     const largeur = this.createTableauForm.get('largeur').value;
