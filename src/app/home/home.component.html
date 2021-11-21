@@ -1,6 +1,6 @@
 <div class="container">
   <div class="prenom" (click)="toAdmin()">
-    <h1 class="display-3 text-center">Marie-Paule B</h1>
+    <h1 class="display-3 text-center text-nowrap">Marie-Paule B</h1>
   </div>
   <br><br>
   <div class="jumbotron">
@@ -35,10 +35,9 @@
       <br><br>
     </p>
     <p class="lead text-right manuscrit">- Marie-Paule B</p>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <a class="btn btn-info" (click)="goAbout()" role="button">Découvrir l'Artiste</a>
-      <a class="btn btn-info" (click)="goPortfolio()" role="button">Découvrir ses Tableaux</a>
-    </div>
+    <br>
+    <a class="btn btn-info btn-block" (click)="goAbout()" role="button">Découvrir l'Artiste</a>
+    <a class="btn btn-info btn-block" (click)="goPortfolio()" role="button">Découvrir ses Tableaux</a>
   </div>
 </div>
 

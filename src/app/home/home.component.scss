@@ -1,5 +1,9 @@
 .jumbotron {
     background-color: #fff;
+
+    & .display-6 {
+        font-size: 2.5rem;
+    }
 }
 
 .carousel-inner {
