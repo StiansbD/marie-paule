@@ -1,0 +1,9 @@
+#contact-card {
+    display: none;
+}
+
+@media screen and (min-width: 1128px) {
+    #contact-card {
+        display: block;
+    }
+} 
