@@ -19,6 +19,8 @@ import { SingleTableauComponent } from './portfolio/single-tableau/single-tablea
 import { AddTableauComponent } from './admin/add-tableau/add-tableau.component';
 import { CategorieService } from './services/categorie.service';
 import { EtatService } from './services/etat.service';
+import { PaginationComponent } from './portfolio/pagination/pagination.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,13 +33,15 @@ import { EtatService } from './services/etat.service';
     SingleTableauComponent,
     EditSingleTableauComponent,
     AddTableauComponent,
-    EditTableauComponent
+    EditTableauComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     AuthService,

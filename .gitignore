@@ -70,3 +70,5 @@ src/app/portfolio/portfolio.component.css
 src/app/portfolio/portfolio.component.css.map
 src/app/portfolio/single-tableau/single-tableau.component.css
 src/app/portfolio/single-tableau/single-tableau.component.css.map
+src/app/portfolio/pagination/pagination.component.css
+src/app/portfolio/pagination/pagination.component.css.map

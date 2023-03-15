@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Tableaux } from '../models/tableaux.model';
 import firebase from 'firebase';
+import { environment } from 'src/environments/environment';
+import { JsonService } from './json.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,9 @@ export class PortfolioService {
   tableaux: Tableaux[] = [];
   tableauxSubject = new Subject<Tableaux[]>();
 
-  constructor() { 
+  constructor(
+    private jsonService: JsonService
+  ) { 
     this.getPortfolio();
   }
 
@@ -24,11 +28,20 @@ export class PortfolioService {
   }
 
   getPortfolio() {
-    firebase.database().ref('/tableaux')
-    .on('value', (data: firebase.database.DataSnapshot) => {
-      this.tableaux = data.val() ? data.val(): [];
-      this.emitPortfolio();
-    });
+    if (environment.production) {
+      firebase.database().ref('/tableaux')
+      .on('value', (data: firebase.database.DataSnapshot) => {
+        this.tableaux = data.val() ? data.val(): [];
+        this.emitPortfolio();
+      });
+    } else {
+      // code pour lecture json
+      this.jsonService.getJSON().subscribe(data => {
+        data['tableaux'].forEach(element => {
+          this.tableaux.push(element);
+        });;
+      });
+    }
   }
 
   getSingleTableau(id: number) {
